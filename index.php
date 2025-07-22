@@ -33,13 +33,23 @@
 <nav class="navbar">
   <div class="nav-container">
     <div class="logo"><?= $company_name ?></div>
-    <ul class="nav-links">
-      <?php foreach ($nav_items as $item): ?>
-        <li><a href="<?= strtolower($item) ?>.php"><?= $item ?></a></li>
-      <?php endforeach; ?>
-    </ul>
+
+    <!-- Hamburger -->
+    <div class="hamburger" onclick="toggleMenu()">
+      ☰
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links" id="navLinks">
+      <ul>
+        <?php foreach ($nav_items as $item): ?>
+          <li><a href="<?= strtolower($item) ?>.php"><?= $item ?></a></li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
   </div>
 </nav>
+
 
 <section class="hero">
   <div class="hero-content">
@@ -72,7 +82,7 @@
 
 
   <!-- What We Do -->
-<section class="section what-we-do">
+<!-- <section class="section what-we-do">
   <h2 class="section-title">What We Do</h2>
   <div class="card-container">
     <?php foreach ($services as $title => $desc): ?>
@@ -83,7 +93,7 @@
       </div>
     <?php endforeach; ?>
   </div>
-</section>
+</section> -->
 
 
 
