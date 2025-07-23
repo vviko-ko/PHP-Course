@@ -1,5 +1,5 @@
 <?php
-$company_name = "GreenTech Solutions";
+$company_name = "EconeemTech";
 $page_title = "Meet Our Team";
 
 $team_members = [

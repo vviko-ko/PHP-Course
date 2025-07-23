@@ -14,7 +14,7 @@
 
     <div class="notify-form">
       <input type="email" placeholder="Enter your email to stay updated" />
-      <button>Notify Me</button>
+      <button>Join the waitlist</button>
     </div>
 
     <p class="launch-note">Launching Soon — Stay Tuned! 🚀</p>

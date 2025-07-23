@@ -3,11 +3,14 @@
   $page_title = "Welcome to $company_name";
   $nav_items = ['Home', 'About', 'Products', 'Team', 'Contact'];
 
-  $mission = "At $company_name, our mission is to create a healthier planet by advancing cutting-edge green technologies. 
-  We aim to reduce carbon emissions, minimize ecological footprints, and foster a culture of environmental stewardship. 
-  Through collaboration, innovation, and community engagement, we strive to build a cleaner, more resilient future for all.";
+  $mission = "At $company_name,our mission is to create accessible, sustainable, and nature-inspired technologies that reduce environmental pollution and improve public health in underserved communities.”*
+ <br/>
+Our Vision:
+ A future where every community enjoys clean air and water as part of resilient, smart, and sustainable cities.";
 
-  $services = [
+ $who_we_are = "Eco Neem Tech is a sustainability-focused startup pioneering nature-based, low-cost technologies to tackle air and water pollution in underserved communities. We are a multidisciplinary team of passionate STEM innovators using science, indigenous knowledge, and smart design to build solutions that advance resilient, smart, and sustainable cities and communities in Nigeria and beyond.";
+  
+ $services = [
     "Renewable Energy" => "Design and installation of solar panels, wind turbines, and hybrid systems.",
     "Green Construction" => "Sustainable architecture, eco-friendly materials, and smart energy systems.",
     "Water Conservation" => "Rainwater harvesting, efficient irrigation, and water recycling systems.",
@@ -53,14 +56,14 @@
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Eco-Friendly Technologies</h1>
+    <h2>
+Nature-based Solutions for Cleaner Air & Water in Smart, Resilient  and Sustainable Cities and Communities</h2>
     <p>
-      Empowering communities and businesses with sustainable solutions that preserve the environment,
-      promote green energy, and inspire the next generation of environmental innovators.
+      We are developing low-cost, nature-based air and water purification technologies to tackle pollution in underserved communities, fostering healthier, smarter, and sustainable cities
     </p>
-    <p class="hero-subtext">
+    <!-- <p class="hero-subtext">
       Join us on the path to a greener planet — through innovation, clean energy, and community-driven transformation.
-    </p>
+    </p> -->
   </div>
   <div class="hero-image">
     <img src="./Images/bulb.jpg" alt="Green Tech Illustration" />
@@ -79,11 +82,18 @@
   </div>
 </section>
 
-
-
+<!-- who we are  -->
+<section class="mission-section">
+    <div class="who-container ">
+        <div class="mission-content fade-in">
+            <h2 >Who We Are</h2>
+            <p ><?= $who_we_are ?></p>
+        </div>
+    </div>
+</section>
   <!-- What We Do -->
-<!-- <section class="section what-we-do">
-  <h2 class="section-title">What We Do</h2>
+<section class="section what-we-do">
+  <h2 class="section-title">What we do</h2>
   <div class="card-container">
     <?php foreach ($services as $title => $desc): ?>
       <div class="card fade-in">
@@ -93,7 +103,7 @@
       </div>
     <?php endforeach; ?>
   </div>
-</section> -->
+</section>
 
 
 
