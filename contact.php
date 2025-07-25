@@ -8,6 +8,9 @@ $page_title = "Contact Us";
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- AOS Animation Library -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
   <title><?= $page_title ?> | <?= $company_name ?></title>
 </head>
@@ -28,15 +31,15 @@ $page_title = "Contact Us";
 </nav>
 
 <!-- Contact Section -->
-<section class="contact-section">
-  <h1>Contact Us</h1>
-  <p class="contact-intro">
+<section class="contact-section" data-aos="fade-up" data-aos-duration="1000">
+  <h1 data-aos="zoom-in" data-aos-delay="100">Contact Us</h1>
+  <p class="contact-intro" data-aos="fade-up" data-aos-delay="200">
     We'd love to hear from you! Reach out with questions, feedback, or partnership opportunities.
   </p>
 
   <div class="contact-container">
     <!-- Contact Form -->
-    <form class="contact-form" action="mailto:youremail@example.com" method="POST" enctype="text/plain">
+    <form class="contact-form" data-aos="fade-right" data-aos-delay="300">
       <input type="text" name="name" placeholder="Your Full Name" required />
       <input type="email" name="email" placeholder="Your Email Address" required />
       <input type="text" name="subject" placeholder="Subject" required />
@@ -45,14 +48,14 @@ $page_title = "Contact Us";
     </form>
 
     <!-- Contact Info -->
-    <div class="contact-info">
+    <div class="contact-info" data-aos="fade-left" data-aos-delay="400">
       <h3>Our Office</h3>
       <p><strong>EcoNeemTech</strong></p>
       <p>123 Eco Street, Green City, NG</p>
       <p>Email: <a href="mailto:econeemtech@gmail.com">info@greentech.com</a></p>
       <p>Phone: +234 800 123 4567</p>
 
-      <div class="map-placeholder">
+      <div class="map-placeholder" data-aos="zoom-in-up" data-aos-delay="500">
         <p>📍 Google Map will be embedded here</p>
       </div>
     </div>
@@ -61,8 +64,52 @@ $page_title = "Contact Us";
 
 <!-- Footer -->
 <footer class="footer">
-  <p>&copy; <?= date("Y") ?> <?= $company_name ?>. All rights reserved.</p>
+  <div class="footer-container">
+    <div class="footer-brand" data-aos="fade-up">
+      <h2>EcoNeemTech </h2>
+      <p>Innovating for a cleaner, greener future through sustainable technology and action.</p>
+    </div>
+
+    <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="team.php">Team</a></li>
+        <li><a href="contact.php">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-newsletter" data-aos="fade-up" data-aos-delay="200">
+      <h4>Subscribe to Our Newsletter</h4>
+      <form action="#" method="post" class="newsletter-form">
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <div class="footer-social" data-aos="fade-up" data-aos-delay="300">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; <?= date("Y") ?> EcoNeemTech. All rights reserved.</p>
+  </div>
 </footer>
+
+<!-- AOS Script -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 
 </body>
 </html>

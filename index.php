@@ -26,6 +26,13 @@ Our Vision:
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
   <title><?= $page_title ?></title>
 </head>
@@ -55,27 +62,24 @@ Our Vision:
 
 
 <section class="hero">
-  <div class="hero-content">
+  <div class="hero-content" data-aos="fade-right" data-aos-duration="1200">
     <h2>
-Nature-based Solutions for Cleaner Air & Water in Smart, Resilient  and Sustainable Cities and Communities</h2>
+      Nature-based Solutions for Cleaner Air & Water in Smart, Resilient and Sustainable Cities and Communities
+    </h2>
     <p>
       We are developing low-cost, nature-based air and water purification technologies to tackle pollution in underserved communities, fostering healthier, smarter, and sustainable cities
     </p>
-    <!-- <p class="hero-subtext">
-      Join us on the path to a greener planet — through innovation, clean energy, and community-driven transformation.
-    </p> -->
   </div>
-  <div class="hero-image">
+  <div class="hero-image" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
     <img src="./Images/bulb.jpg" alt="Green Tech Illustration" />
   </div>
 </section>
 
 
-
   <!-- Our Mission -->
 <section class="mission-section">
-  <div class="mission-container">
-    <div class="mission-content fade-in">
+  <div class="mission-container" data-aos="fade-up">
+    <div class="mission-content">
       <h2>🌎 Our Mission</h2>
       <p><?= $mission ?></p>
     </div>
@@ -84,28 +88,34 @@ Nature-based Solutions for Cleaner Air & Water in Smart, Resilient  and Sustaina
 
 <!-- who we are  -->
 <section class="mission-section">
-    <div class="who-container ">
-        <div class="mission-content fade-in">
-            <h2 >Who We Are</h2>
-            <p ><?= $who_we_are ?></p>
-        </div>
+  <div class="who-container" data-aos="fade-up" data-aos-delay="100">
+    <div class="mission-content">
+      <h2>Who We Are</h2>
+      <p><?= $who_we_are ?></p>
     </div>
+  </div>
 </section>
+
   <!-- What We Do -->
 <section class="section what-we-do">
   <h2 class="section-title">What we do</h2>
   <div class="card-container">
     <?php foreach ($services as $title => $desc): ?>
       <div class="card fade-in">
-        <img src="images/<?= strtolower(str_replace(' ', '-', $title)) ?>.jpg" alt="<?= $title ?>" class="card-icon"/>
+        <span class="emoji"><?= match($title) {
+          "Renewable Energy" => "🔋",
+          "Green Construction" => "🏗️",
+          "Water Conservation" => "💧",
+          "Environmental Consulting" => "🌿",
+          "Community Projects" => "🤝",
+          default => "🌎"
+        } ?></span>
         <h3><?= $title ?></h3>
         <p><?= $desc ?></p>
       </div>
     <?php endforeach; ?>
   </div>
 </section>
-
-
 
   <!-- Call to Action -->
   <!-- Join the Movement -->
@@ -129,10 +139,56 @@ Nature-based Solutions for Cleaner Air & Water in Smart, Resilient  and Sustaina
 
 
   <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; <?= date("Y") ?> <?= $company_name ?>. All rights reserved.</p>
-    <p>Powered by innovation • Inspired by nature • Focused on the future</p>
-  </footer>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand" data-aos="fade-up">
+      <h2>EcoNeemTech </h2>
+      <p>Innovating for a cleaner, greener future through sustainable technology and action.</p>
+    </div>
+
+    <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="team.php">Team</a></li>
+        <li><a href="contact.php">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-newsletter" data-aos="fade-up" data-aos-delay="200">
+      <h4>Subscribe to Our Newsletter</h4>
+      <form action="#" method="post" class="newsletter-form">
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <div class="footer-social" data-aos="fade-up" data-aos-delay="300">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; <?= date("Y") ?> EcoNeemTech. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
 
 </body>
 </html>
