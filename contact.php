@@ -1,6 +1,8 @@
 <?php
 $company_name = "EcoNeemTech";
 $page_title = "Contact Us";
+ $nav_items = ['Home', 'About', 'Products', 'Team', 'Contact'];
+
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +22,26 @@ $page_title = "Contact Us";
 <nav class="navbar">
   <div class="nav-container">
     <div class="logo"><?= $company_name ?></div>
-    <ul class="nav-links">
-      <li><a href="index.php">Home</a></li>
-      <li><a href="about.php">About</a></li>
-      <li><a href="products.php">Products</a></li>
-      <li><a href="team.php">Team</a></li>
-      <!-- <li><a href="contact.php" class="active">Contact</a></li> -->
-    </ul>
+
+    <!-- Hamburger -->
+    <!-- Hamburger -->
+<div class="hamburger" onclick="toggleMenu(this)">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+
+    <!-- Navigation Links -->
+    <div class="nav-links" id="navLinks">
+      <ul>
+        <?php foreach ($nav_items as $item): ?>
+          <li><a href="<?= strtolower($item) ?>.php"><?= $item ?></a></li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
   </div>
 </nav>
-
 <!-- Contact Section -->
 <section class="contact-section" data-aos="fade-up" data-aos-duration="1000">
   <h1 data-aos="zoom-in" data-aos-delay="100">Contact Us</h1>
@@ -109,6 +121,18 @@ $page_title = "Contact Us";
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init();
+</script>
+<script>
+  function toggleMenu() {
+    const navLinks = document.getElementById("navLinks");
+    navLinks.classList.toggle("active");
+  }
+</script>
+<script>
+  function toggleMenu(el) {
+    el.classList.toggle("open");
+    document.getElementById("navLinks").classList.toggle("active");
+  }
 </script>
 
 </body>

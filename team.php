@@ -1,6 +1,8 @@
 <?php
 $company_name = "EconeemTech";
 $page_title = "Meet Our Team";
+ $nav_items = ['Home', 'About', 'Products', 'Team', 'Contact'];
+
 
 $team_members = [
   [
@@ -51,17 +53,27 @@ $team_members = [
 <nav class="navbar">
   <div class="nav-container">
     <div class="logo"><?= $company_name ?></div>
-    <ul class="nav-links">
-      <li><a href="index.php">Home</a></li>
-      <li><a href="about.php">About</a></li>
-      <!-- <li><a href="projects.php">Projects</a></li> -->
-      <!-- <li><a href="services.php">Services</a></li> -->
-      <li><a href="products.php">Products</a></li>
-      <!-- <li><a href="team.php" class="active">Team</a></li> -->
-      <li><a href="contact.php">Contact</a></li>
-    </ul>
+
+    <!-- Hamburger -->
+    <!-- Hamburger -->
+<div class="hamburger" onclick="toggleMenu(this)">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+
+    <!-- Navigation Links -->
+    <div class="nav-links" id="navLinks">
+      <ul>
+        <?php foreach ($nav_items as $item): ?>
+          <li><a href="<?= strtolower($item) ?>.php"><?= $item ?></a></li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
   </div>
 </nav>
+
 
 <section class="team-section">
   <h1>Meet Our Team</h1>
@@ -127,6 +139,20 @@ $team_members = [
     once: true
   });
 </script>
+<script>
+  function toggleMenu() {
+    const navLinks = document.getElementById("navLinks");
+    navLinks.classList.toggle("active");
+  }
+</script>
+<script>
+  function toggleMenu(el) {
+    el.classList.toggle("open");
+    document.getElementById("navLinks").classList.toggle("active");
+  }
+</script>
+
+
 
 </body>
 </html>

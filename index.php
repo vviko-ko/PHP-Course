@@ -45,9 +45,13 @@ Our Vision:
     <div class="logo"><?= $company_name ?></div>
 
     <!-- Hamburger -->
-    <div class="hamburger" onclick="toggleMenu()">
-      ☰
-    </div>
+    <!-- Hamburger -->
+<div class="hamburger" onclick="toggleMenu(this)">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
 
     <!-- Navigation Links -->
     <div class="nav-links" id="navLinks">
@@ -189,6 +193,19 @@ Our Vision:
     once: true
   });
 </script>
+<script>
+  function toggleMenu() {
+    const navLinks = document.getElementById("navLinks");
+    navLinks.classList.toggle("active");
+  }
+</script>
+<script>
+  function toggleMenu(el) {
+    el.classList.toggle("open");
+    document.getElementById("navLinks").classList.toggle("active");
+  }
+</script>
+
 
 </body>
 </html>
