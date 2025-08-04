@@ -62,9 +62,10 @@ $page_title = "Contact Us";
     <!-- Contact Info -->
     <div class="contact-info" data-aos="fade-left" data-aos-delay="400">
       <!-- <h3>Our Office</h3> -->
+      <!-- <h3>Our Office</h3> -->
       <p><strong>EcoNeemTech</strong></p>
       <!-- <p>123 Eco Street, Green City, NG</p> -->
-      <p>Email: <a href="mailto:econeemtech@gmail.com">econeemt@econeemtech.com</a></p>
+      <p>Email: <a href="mailto:econeemt@econeemtech.com">econeemt@econeemtech.com</a></p>
       <p>Phone: +234 703 909 5798</p>
 
       <div class="map-placeholder" data-aos="zoom-in-up" data-aos-delay="500">
