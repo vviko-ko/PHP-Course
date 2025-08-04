@@ -1,7 +1,7 @@
 <?php
   $company_name = "EcoNeemTech";
   $page_title = "Welcome to $company_name";
-  $nav_items = ['Home', 'About', 'Products', 'Team', 'Contact'];
+  $nav_items = [ 'About', 'Products', 'Team', 'Contact'];
 
   $mission = "At $company_name,our mission is to create accessible, sustainable, and nature-inspired technologies that reduce environmental pollution and improve public health in underserved communities.”*
  <br/>
