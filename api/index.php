@@ -68,7 +68,7 @@ $services = [
   <!-- AOS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <title><?= $company_name ?> | Sustainable Engineering Solutions</title>
 </head>
 
@@ -97,7 +97,7 @@ $services = [
 
       <!-- Cart Icon -->
       <div class="nav-actions">
-        <a href="#" class="cart-icon" onclick="return false;">
+        <a href="/cart" class="cart-icon">
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-count"><?= $cart_count ?></span>
         </a>
@@ -118,6 +118,7 @@ $services = [
       </div>
     </div>
   </section>
+
 
   <!-- Stats Section -->
   <section class="stats-section">
@@ -213,8 +214,8 @@ $services = [
 
               <!-- Quick Actions Overlay -->
               <div class="product-overlay">
-                <button class="btn-icon"><i class="far fa-heart"></i></button>
-                <button class="btn-icon"><i class="far fa-eye"></i></button>
+                <button class="btn-icon" onclick="alert('Added to Wishlist!')"><i class="far fa-heart"></i></button>
+                <button class="btn-icon" onclick="alert('Quick view coming soon!')"><i class="far fa-eye"></i></button>
               </div>
             </div>
 
