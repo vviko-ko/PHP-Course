@@ -1,4 +1,38 @@
 <?php
+session_start();
+
+// API Endpoint for Cart Operations
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  header('Content-Type: application/json');
+  $input = json_decode(file_get_contents('php://input'), true);
+
+  if (isset($input['action']) && $input['action'] === 'add_to_cart') {
+    if (!isset($_SESSION['cart'])) {
+      $_SESSION['cart'] = [];
+    }
+
+    $product_name = $input['product_name'] ?? 'Unknown Product';
+    $product_price = $input['product_price'] ?? 0;
+
+    // Add item to session cart
+    $_SESSION['cart'][] = [
+      'name' => $product_name,
+      'price' => $product_price,
+      'added_at' => time()
+    ];
+
+    echo json_encode([
+      'success' => true,
+      'cart_count' => count($_SESSION['cart']),
+      'message' => 'Product added to cart'
+    ]);
+    exit;
+  }
+}
+
+// Get current cart count for page load
+$cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+
 $company_name = "EcoNeemTech";
 $page_title = "Home";
 $nav_items = [
@@ -65,7 +99,7 @@ $services = [
       <div class="nav-actions">
         <a href="#" class="cart-icon" onclick="return false;">
           <i class="fas fa-shopping-cart"></i>
-          <span class="cart-count">0</span>
+          <span class="cart-count"><?= $cart_count ?></span>
         </a>
       </div>
     </div>
@@ -196,7 +230,7 @@ $services = [
 
               <div class="product-footer">
                 <span class="product-price"><?= $product['price'] ?></span>
-                <button class="btn-cart">
+                <button class="btn-cart" data-name="<?= $product['name'] ?>" data-price="<?= $product['price'] ?>">
                   <i class="fas fa-shopping-cart"></i> Add
                 </button>
               </div>
@@ -350,31 +384,56 @@ $services = [
       navLinks.classList.toggle("active");
     }
 
-    // Cart Functionality
+    // Cart Functionality (Backend Connected)
     const cartBtns = document.querySelectorAll('.btn-cart');
     const cartCount = document.querySelector('.cart-count');
-    let count = 0;
 
     cartBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        count++;
-        cartCount.innerText = count;
-        
-        // Animation effect
-        cartCount.style.transform = 'scale(1.5)';
-        setTimeout(() => {
-           cartCount.style.transform = 'scale(1)';
-        }, 200);
-        
-        // Button feedback
+      btn.addEventListener('click', function () {
+        const productName = this.dataset.name;
+        const productPrice = this.dataset.price;
         const originalText = this.innerHTML;
-        this.innerHTML = '<i class="fas fa-check"></i> Added';
-        this.style.background = 'var(--primary-dark)';
-        
-        setTimeout(() => {
-          this.innerHTML = originalText;
-          this.style.background = '';
-        }, 1500);
+        const btnElement = this;
+
+        // Visual loading state
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+
+        // Send request to backend
+        fetch('/api/index.php', { // Assuming your API endpoint is /api/index.php
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            action: 'add_to_cart',
+            product_name: productName,
+            product_price: productPrice
+          }),
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              // Update cart count from server
+              cartCount.innerText = data.cart_count;
+
+              // Animation loop
+              cartCount.style.transform = 'scale(1.5)';
+              setTimeout(() => { cartCount.style.transform = 'scale(1)'; }, 200);
+
+              // Success feedback
+              btnElement.innerHTML = '<i class="fas fa-check"></i> Added';
+              btnElement.style.background = 'var(--primary-dark)';
+
+              setTimeout(() => {
+                btnElement.innerHTML = originalText;
+                btnElement.style.background = '';
+              }, 1500);
+            }
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+            btnElement.innerHTML = 'Error';
+          });
       });
     });
   </script>
