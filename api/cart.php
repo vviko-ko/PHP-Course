@@ -240,6 +240,65 @@ $company_name = "EcoNeemTech";
                 position: static;
             }
         }
+
+        .empty-cart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .empty-cart-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--bg-soft);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 20px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        .btn-start-shopping {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-lg);
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-start-shopping:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
     </style>
 </head>
 
@@ -249,7 +308,7 @@ $company_name = "EcoNeemTech";
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo"><a href="/"><?= $company_name ?></a></div>
-            
+
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -346,14 +405,18 @@ $company_name = "EcoNeemTech";
                 </div>
 
             <?php else: ?>
-                <div class="empty-cart" data-aos="fade-in">
-                    <i class="fas fa-shopping-basket"
-                        style="color: var(--text-muted); font-size: 5rem; margin-bottom: 2rem; opacity: 0.5;"></i>
-                    <h3 style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;">Your bag is empty</h3>
-                    <p style="color:var(--text-muted); margin-bottom: 2.5rem; font-size: 1.1rem;">
-                        Start filling it with eco-friendly solutions today.
+                <div class="empty-cart-container" data-aos="fade-in">
+                    <div class="empty-cart-icon">
+                        <i class="fas fa-shopping-basket"></i>
+                    </div>
+                    <h3 style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem; font-weight:800;">Your Cart is
+                        Empty</h3>
+                    <p
+                        style="color:var(--text-muted); margin-bottom: 2.5rem; font-size: 1.2rem; max-width: 450px; line-height: 1.6;">
+                        Looks like you haven't made your choice yet. Explore our eco-friendly solutions and start your
+                        journey.
                     </p>
-                    <a href="/#products" class="btn btn-primary" style="padding: 1rem 2.5rem;">
+                    <a href="/#products" class="btn-start-shopping">
                         Start Shopping
                     </a>
                 </div>
