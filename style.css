@@ -283,28 +283,44 @@ img {
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+    z-index: 1001;
+    /* Above nav links */
   }
 
   .nav-links {
-    position: absolute;
+    position: fixed;
+    /* Fixed to cover screen if needed or absolute */
     top: var(--header-height);
     left: 0;
     right: 0;
+    height: auto;
     background: white;
     padding: 2rem;
     box-shadow: var(--shadow-lg);
     clip-path: circle(0% at 100% 0);
-    transition: clip-path 0.4s ease-in-out;
+    transition: clip-path 0.5s ease-in-out;
+    border-bottom: 1px solid #e5e7eb;
+    pointer-events: none;
+    /* Prevent clicks when closed */
   }
 
   .nav-links.active {
-    clip-path: circle(150% at 100% 0);
+    clip-path: circle(150% at 90% 0);
+    pointer-events: all;
   }
 
   .nav-links ul {
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 }
 

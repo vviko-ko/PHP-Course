@@ -71,10 +71,20 @@ $company_name = "EcoNeemTech";
             font-weight: 800;
         }
 
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 1.8rem;
+                /* Fit on one line on most screens */
+                margin-bottom: 1.5rem;
+            }
+        }
+
         .cart-grid {
             display: grid;
-            grid-template-columns: 1fr 380px;
-            gap: 2rem;
+            grid-template-columns: 1fr 340px;
+            /* Reduced summary width to give more space to items */
+            gap: 1.5rem;
+            /* Reduced gap */
             align-items: start;
         }
 
@@ -145,12 +155,13 @@ $company_name = "EcoNeemTech";
 
         /* Right Column: Summary */
         .summary-card {
-             background: white;
+            background: white;
             border-radius: 12px;
             box-shadow: var(--shadow-sm);
             padding: 2rem;
             position: sticky;
-            top: 100px; /* Stick below nav */
+            top: 100px;
+            /* Stick below nav */
         }
 
         .summary-title {
@@ -224,18 +235,27 @@ $company_name = "EcoNeemTech";
             .cart-grid {
                 grid-template-columns: 1fr;
             }
+
             .summary-card {
                 position: static;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo"><a href="/"><?= $company_name ?></a></div>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
             <div class="nav-links" id="navLinks">
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -265,29 +285,30 @@ $company_name = "EcoNeemTech";
                             <div class="cart-items-header">
                                 <span><?= $cart_count ?> Item<?= $cart_count !== 1 ? 's' : '' ?></span>
                             </div>
-                            
+
                             <?php foreach ($cart as $index => $item): ?>
-                            <div class="cart-item">
-                                <!-- Placeholder Generic Image/Icon -->
-                                <div class="item-icon">
-                                    <i class="fas fa-box-open"></i>
+                                <div class="cart-item">
+                                    <!-- Placeholder Generic Image/Icon -->
+                                    <div class="item-icon">
+                                        <i class="fas fa-box-open"></i>
+                                    </div>
+                                    <div class="item-details">
+                                        <span class="item-name"><?= htmlspecialchars($item['name']) ?></span>
+                                        <span class="item-price"><?= htmlspecialchars($item['price']) ?></span>
+                                    </div>
+                                    <form method="POST" style="margin:0;">
+                                        <input type="hidden" name="action" value="remove">
+                                        <input type="hidden" name="index" value="<?= $index ?>">
+                                        <button type="submit" class="btn-delete-icon" title="Remove Item">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
                                 </div>
-                                <div class="item-details">
-                                    <span class="item-name"><?= htmlspecialchars($item['name']) ?></span>
-                                    <span class="item-price"><?= htmlspecialchars($item['price']) ?></span>
-                                </div>
-                                <form method="POST" style="margin:0;">
-                                    <input type="hidden" name="action" value="remove">
-                                    <input type="hidden" name="index" value="<?= $index ?>">
-                                    <button type="submit" class="btn-delete-icon" title="Remove Item">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
-                            </div>
                             <?php endforeach; ?>
                         </div>
-                        
-                        <a href="/#products" style="display:inline-block; margin-top: 1.5rem; color: var(--primary); font-weight: 600; text-decoration: none;">
+
+                        <a href="/#products"
+                            style="display:inline-block; margin-top: 1.5rem; color: var(--primary); font-weight: 600; text-decoration: none;">
                             <i class="fas fa-arrow-left"></i> Continue Shopping
                         </a>
                     </div>
@@ -295,7 +316,7 @@ $company_name = "EcoNeemTech";
                     <!-- Summary Column -->
                     <div class="summary-card" data-aos="fade-up" data-aos-delay="100">
                         <h3 class="summary-title">Order Summary</h3>
-                        
+
                         <div class="summary-row">
                             <span>Subtotal</span>
                             <span>$<?= number_format($total, 2) ?></span>
@@ -308,7 +329,7 @@ $company_name = "EcoNeemTech";
                             <span>Tax (Estimate)</span>
                             <span>$0.00</span>
                         </div>
-                        
+
                         <div class="summary-row total">
                             <span>Total</span>
                             <span>$<?= number_format($total, 2) ?></span>
@@ -317,7 +338,7 @@ $company_name = "EcoNeemTech";
                         <button class="btn-checkout" onclick="alert('Checkout initiated!')">
                             Checkout <i class="fas fa-arrow-right"></i>
                         </button>
-                        
+
                         <div style="margin-top: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
                             <i class="fas fa-lock"></i> Secure Checkout
                         </div>
@@ -326,7 +347,8 @@ $company_name = "EcoNeemTech";
 
             <?php else: ?>
                 <div class="empty-cart" data-aos="fade-in">
-                    <i class="fas fa-shopping-basket" style="color: var(--text-muted); font-size: 5rem; margin-bottom: 2rem; opacity: 0.5;"></i>
+                    <i class="fas fa-shopping-basket"
+                        style="color: var(--text-muted); font-size: 5rem; margin-bottom: 2rem; opacity: 0.5;"></i>
                     <h3 style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;">Your bag is empty</h3>
                     <p style="color:var(--text-muted); margin-bottom: 2.5rem; font-size: 1.1rem;">
                         Start filling it with eco-friendly solutions today.
@@ -354,6 +376,12 @@ $company_name = "EcoNeemTech";
         </div>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });
