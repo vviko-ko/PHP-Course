@@ -1,5 +1,24 @@
 <?php
-session_start();
+// session_start(); // Removing session start in favor of Cookies for Vercel support
+
+// Helper to get cart from cookie
+function getCart() {
+    if (isset($_COOKIE['econeem_cart'])) {
+        $data = $_COOKIE['econeem_cart'];
+        $cart = json_decode($data, true);
+        if (!is_array($cart)) {
+             $cart = json_decode(stripslashes($data), true);
+        }
+        return is_array($cart) ? $cart : [];
+    }
+    return [];
+}
+
+// Helper to save cart to cookie
+function saveCart($cart)
+{
+  setcookie('econeem_cart', json_encode($cart), time() + (86400 * 30), "/"); // 30 days
+}
 
 // API Endpoint for Cart Operations
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -7,23 +26,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $input = json_decode(file_get_contents('php://input'), true);
 
   if (isset($input['action']) && $input['action'] === 'add_to_cart') {
-    if (!isset($_SESSION['cart'])) {
-      $_SESSION['cart'] = [];
-    }
+    $cart = getCart();
 
     $product_name = $input['product_name'] ?? 'Unknown Product';
     $product_price = $input['product_price'] ?? 0;
 
-    // Add item to session cart
-    $_SESSION['cart'][] = [
+    // Add item to cart
+    $cart[] = [
       'name' => $product_name,
       'price' => $product_price,
       'added_at' => time()
     ];
 
+    saveCart($cart);
+
     echo json_encode([
       'success' => true,
-      'cart_count' => count($_SESSION['cart']),
+      'cart_count' => count($cart),
       'message' => 'Product added to cart'
     ]);
     exit;
@@ -31,7 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Get current cart count for page load
-$cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+$cart = getCart();
+$cart_count = count($cart);
 
 $company_name = "EcoNeemTech";
 $page_title = "Home";

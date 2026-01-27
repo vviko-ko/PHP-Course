@@ -1,30 +1,43 @@
 <?php
-session_start();
+// session_start(); // Removing session start in favor of Cookies for Vercel support
+function getCart()
+{
+    if (isset($_COOKIE['econeem_cart'])) {
+        $data = $_COOKIE['econeem_cart'];
+        $cart = json_decode($data, true);
+        if (!is_array($cart)) {
+            $cart = json_decode(stripslashes($data), true);
+        }
+        return is_array($cart) ? $cart : [];
+    }
+    return [];
+}
+function saveCart($cart)
+{
+    setcookie('econeem_cart', json_encode($cart), time() + (86400 * 30), "/");
+}
 
 // Handle Remove Action
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'remove') {
+    $cart = getCart();
     $index = $_POST['index'] ?? -1;
-    if ($index >= 0 && isset($_SESSION['cart'][$index])) {
-        array_splice($_SESSION['cart'], $index, 1);
-        // Reset array keys
-        $_SESSION['cart'] = array_values($_SESSION['cart']);
+    if ($index >= 0 && isset($cart[$index])) {
+        array_splice($cart, $index, 1);
+        saveCart(array_values($cart));
     }
-    // Redirect to avoid resubmission
     header('Location: /cart');
     exit;
 }
 
+$cart = getCart();
+$cart_count = count($cart);
+
 // Calculate Total
 $total = 0;
-if (isset($_SESSION['cart'])) {
-    foreach ($_SESSION['cart'] as $item) {
-        // Price is stored as "$499.00", remove $ and parse
-        $price = floatval(preg_replace('/[^0-9.]/', '', $item['price']));
-        $total += $price;
-    }
+foreach ($cart as $item) {
+    $price = floatval(preg_replace('/[^0-9.]/', '', $item['price']));
+    $total += $price;
 }
-
-$cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 $company_name = "EcoNeemTech";
 ?>
 <!DOCTYPE html>
@@ -205,9 +218,9 @@ $company_name = "EcoNeemTech";
     <!-- Cart Section -->
     <section class="cart-section">
         <div class="container">
-            <div class="section-header text-center" data-aos="fade-up">
+            <!-- <div class="section-header text-center" data-aos="fade-up">
                 <h2 class="section-title">Your Shopping Cart</h2>
-            </div>
+            </div> -->
 
             <?php if ($cart_count > 0): ?>
                 <div class="cart-wrapper" data-aos="fade-up">
@@ -220,7 +233,7 @@ $company_name = "EcoNeemTech";
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($_SESSION['cart'] as $index => $item): ?>
+                            <?php foreach ($cart as $index => $item): ?>
                                 <tr>
                                     <td class="cart-item-name">
                                         <?= htmlspecialchars($item['name']) ?>
