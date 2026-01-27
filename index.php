@@ -1,211 +1,384 @@
 <?php
-  $company_name = "EcoNeemTech";
-  $page_title = "Welcome to $company_name";
-  $nav_items = [ 'About', 'Products', 'Team', 'Contact'];
+$company_name = "EcoNeemTech";
+$page_title = "Home";
+$nav_items = [
+  'Home' => '#home',
+  'About' => '#about',
+  'Products' => '#products',
+  'Team' => '#team',
+  'Contact' => '#contact'
+];
 
-  $mission = "At $company_name,our mission is to create accessible, sustainable, and nature-inspired technologies that reduce environmental pollution and improve public health in underserved communities.”*
- <br/>
-Our Vision:
- A future where every community enjoys clean air and water as part of resilient, smart, and sustainable cities.";
-
- $who_we_are = "Eco Neem Tech is a sustainability-focused startup pioneering nature-based, low-cost technologies to tackle air and water pollution in underserved communities. We are a multidisciplinary team of passionate STEM innovators using science, indigenous knowledge, and smart design to build solutions that advance resilient, smart, and sustainable cities and communities in Nigeria and beyond.";
-  
- $services = [
-    "Renewable Energy" => "Design and installation of solar panels, wind turbines, and hybrid systems.",
-    "Green Construction" => "Sustainable architecture, eco-friendly materials, and smart energy systems.",
-    "Water Conservation" => "Rainwater harvesting, efficient irrigation, and water recycling systems.",
-    "Environmental Consulting" => "Audits, compliance, and strategy development for sustainability goals.",
-    "Community Projects" => "Environmental education, youth empowerment, and green jobs training."
-  ];
+$services = [
+  "Renewable Energy" => "Implementation of solar micro-grids and bio-energy systems for off-grid communities.",
+  "Green Construction" => "Eco-friendly building materials and sustainable urban planning services.",
+  "Water Conservation" => "Rainwater harvesting and bio-filtration systems for clean water access.",
+  "Environmental Consulting" => "Expert advisory on carbon footprint reduction and ESG compliance.",
+  "Community Projects" => "Grassroots initiatives for reforestation and waste management."
+];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- AOS CSS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
-  <title><?= $page_title ?></title>
+  <link rel="stylesheet" href="style.css" />
+  <title><?= $company_name ?> | Sustainable Engineering Solutions</title>
 </head>
+
 <body>
 
-  <!-- Navigation -->
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo"><?= $company_name ?></div>
 
-<nav class="navbar">
-  <div class="nav-container">
-    <div class="logo"><?= $company_name ?></div>
-
-    <!-- Hamburger -->
-    <!-- Hamburger -->
-<div class="hamburger" onclick="toggleMenu(this)">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
-
-    <!-- Navigation Links -->
-    <div class="nav-links" id="navLinks">
-      <ul>
-        <?php foreach ($nav_items as $item): ?>
-          <li><a href="<?= strtolower($item) ?>.php"><?= $item ?></a></li>
-        <?php endforeach; ?>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-<section class="hero">
-  <div class="hero-content" data-aos="fade-right" data-aos-duration="1200">
-    <h2>
-      Nature-based Solutions for Cleaner Air & Water in Smart, Resilient and Sustainable Cities and Communities
-    </h2>
-    <p>
-      We are developing low-cost, nature-based air and water purification technologies to tackle pollution in underserved communities, fostering healthier, smarter, and sustainable cities
-    </p>
-  </div>
-  <div class="hero-image" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
-    <img src="./Images/bulb.jpg" alt="Green Tech Illustration" />
-  </div>
-</section>
-
-
-  <!-- Our Mission -->
-<section class="mission-section">
-  <div class="mission-container" data-aos="fade-up">
-    <div class="mission-content">
-      <h2>🌎 Our Mission</h2>
-      <p><?= $mission ?></p>
-    </div>
-  </div>
-</section>
-
-<!-- who we are  -->
-<section class="mission-section">
-  <div class="who-container" data-aos="fade-up" data-aos-delay="100">
-    <div class="mission-content">
-      <h2>Who We Are</h2>
-      <p><?= $who_we_are ?></p>
-    </div>
-  </div>
-</section>
-
-  <!-- What We Do -->
-<section class="section what-we-do">
-  <h2 class="section-title">What we do</h2>
-  <div class="card-container">
-    <?php foreach ($services as $title => $desc): ?>
-      <div class="card fade-in">
-        <span class="emoji"><?= match($title) {
-          "Renewable Energy" => "🔋",
-          "Green Construction" => "🏗️",
-          "Water Conservation" => "💧",
-          "Environmental Consulting" => "🌿",
-          "Community Projects" => "🤝",
-          default => "🌎"
-        } ?></span>
-        <h3><?= $title ?></h3>
-        <p><?= $desc ?></p>
+      <!-- Hamburger -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-    <?php endforeach; ?>
-  </div>
-</section>
 
-  <!-- Call to Action -->
-  <!-- Join the Movement -->
-<!-- Join the Movement -->
-<!-- Join the Movement -->
-<section class="cta-section no-card">
-  <h2 class="fade-in">🌿 Join the Movement 🌍</h2>
-  <p class="fade-in delay-1">
-    Be a part of the green revolution! Whether you're a homeowner, entrepreneur, NGO, or government agency, 
-    <strong><?= $company_name ?></strong> is here to help you make a real impact on the environment.
-  </p>
-  <p class="fade-in delay-2">
-    Let’s collaborate to build smarter, cleaner, and more sustainable communities — one project at a time.
-  </p>
+      <!-- Navigation Links -->
+      <div class="nav-links" id="navLinks">
+        <ul>
+          <?php foreach ($nav_items as $label => $link): ?>
+            <li><a href="<?= $link ?>"><?= $label ?></a></li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
 
-  <!-- BUTTON UNDERNEATH -->
-  <div class="fade-in delay-3">
-    <a href="contact.php" class="cta-button">📬 Contact Us Today</a>
-  </div>
-</section>
+      <!-- Cart Icon -->
+      <div class="nav-actions">
+        <a href="#" class="cart-icon" onclick="return false;">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Hero Section -->
+  <section id="home" class="hero-professional">
+    <div class="hero-overlay"></div>
+    <div class="hero-content-pro" data-aos="fade-up">
+      <h1>Engineering a Sustainable Future</h1>
+      <p>We deliver nature-based technologies and smart infrastructure solutions for resilient cities and communities.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-primary">Our Solutions</a>
+        <a href="#contact" class="btn btn-outline-white">Partner With Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container stats-grid">
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+        <span class="stat-number">50+</span>
+        <span class="stat-label">Projects Completed</span>
+      </div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+        <span class="stat-number">10k+</span>
+        <span class="stat-label">Lives Impacted</span>
+      </div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Sustainable</span>
+      </div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-split section-padding">
+    <div class="container split-wrapper">
+      <div class="split-content" data-aos="fade-right">
+        <div class="section-label">Who We Are</div>
+        <h2>Pioneering Nature-Based Innovation</h2>
+        <p class="lead-text">
+          EcoNeemTech is more than a startup; we are a movement towards smarter, cleaner cities.
+        </p>
+        <p>
+          By combining indigenous knowledge with cutting-edge engineering, we solve critical air and water pollution
+          challenges.
+          What started as a university research project on the purifying properties of Neem trees has grown into a
+          multi-national green technology firm.
+        </p>
+        <p>
+          We integrate indigenous environmental wisdom with modern engineering to create solutions that are
+          not only effective but also culturally and ecologically appropriate.
+        </p>
+      </div>
+      <div class="split-image" data-aos="fade-left">
+        <img src="./Images/about-illustration.jpg" alt="EcoNeemTech Team" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop / Products Section -->
+  <section id="products" class="section bg-soft section-padding">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-label">Our Shop</div>
+        <h2 class="section-title">Eco-Friendly Products</h2>
+        <p class="section-subtitle">High-quality sustainable solutions for your home and community.</p>
+      </div>
+
+      <div class="technology-grid">
+        <?php
+        $products = [
+          [
+            "name" => "Solar Home Kit Pro",
+            "price" => "$499.00",
+            "image" => "./Images/bulb.jpg",
+            "rating" => 5
+          ],
+          [
+            "name" => "Bio-Sand Water Filter",
+            "price" => "$129.50",
+            "image" => "./Images/bulb.jpg",
+            "rating" => 4
+          ],
+          [
+            "name" => "Smart Irrigation Hub",
+            "price" => "$249.99",
+            "image" => "./Images/Green Trch.jpg",
+            "rating" => 5
+          ],
+          [
+            "name" => "Recycled Brick Pack",
+            "price" => "$89.00",
+            "image" => "./Images/Green Trch.jpg",
+            "rating" => 4
+          ]
+        ];
+
+        foreach ($products as $product): ?>
+          <div class="tech-card product-card" data-aos="fade-up">
+            <div class="tech-image">
+              <span class="badge-sale">Best Seller</span>
+              <img src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
+
+              <!-- Quick Actions Overlay -->
+              <div class="product-overlay">
+                <button class="btn-icon"><i class="far fa-heart"></i></button>
+                <button class="btn-icon"><i class="far fa-eye"></i></button>
+              </div>
+            </div>
+
+            <div class="tech-content">
+              <div class="product-rating">
+                <?php for ($i = 0; $i < $product['rating']; $i++)
+                  echo '<i class="fas fa-star text-warning"></i>'; ?>
+                <?php for ($i = $product['rating']; $i < 5; $i++)
+                  echo '<i class="far fa-star text-muted"></i>'; ?>
+              </div>
+
+              <h3 class="product-title"><?= $product['name'] ?></h3>
+
+              <div class="product-footer">
+                <span class="product-price"><?= $product['price'] ?></span>
+                <button class="btn-cart">
+                  <i class="fas fa-shopping-cart"></i> Add
+                </button>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+
+      <div class="text-center mt-5" style="margin-top: 3rem;" data-aos="fade-up">
+        <a href="#" class="btn btn-outline-dark">View All Products</a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Team Section -->
+  <section id="team" class="section section-padding">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-label">Our Team</div>
+        <h2 class="section-title">Meet the Visionaries</h2>
+        <p class="section-subtitle">Dedicated professionals driving sustainability through innovation.</p>
+      </div>
+
+      <div class="team-grid-pro">
+        <?php
+        $team_members = [
+          ["name" => "Cynthia OLuchi", "position" => "Chief Sustainability Officer", "image" => "./Images/icon.jpg"],
+          ["name" => "Victor Olusanmi-Sogbein", "position" => "Chief Technology Officer", "image" => "./Images/icon.jpg"],
+          ["name" => "Lora Annex", "position" => "Community Manager", "image" => "./Images/icon.jpg"],
+          ["name" => "Abdulrahman", "position" => "Project Director", "image" => "./Images/icon.jpg"]
+        ];
+        foreach ($team_members as $member): ?>
+          <div class="team-card-pro" data-aos="fade-up">
+            <div class="member-img-wrapper">
+              <img src="<?= $member['image'] ?>" alt="<?= $member['name'] ?>" class="member-img" />
+            </div>
+            <div class="member-info">
+              <h3><?= $member['name'] ?></h3>
+              <span class="role"><?= $member['position'] ?></span>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section bg-soft section-padding">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-label">Contact Us</div>
+        <h2 class="section-title">Get in Touch</h2>
+      </div>
+
+      <div class="contact-split-wrapper" data-aos="fade-up">
+        <!-- Info Panel -->
+        <div class="contact-info-panel">
+          <h2>Contact Information</h2>
+          <p style="color: rgba(255,255,255,0.7); margin-bottom: 2rem;">
+            Ready to start a project? Reach out to us today.
+          </p>
+          <div class="info-item"><i class="fas fa-envelope"></i>
+            <div>
+              <h4 style="color:white;margin-bottom:0.2rem">Email</h4>
+              <p>econeemt@econeemtech.com</p>
+            </div>
+          </div>
+          <div class="info-item"><i class="fas fa-phone"></i>
+            <div>
+              <h4 style="color:white;margin-bottom:0.2rem">Phone</h4>
+              <p>+234 703 909 5798</p>
+            </div>
+          </div>
+          <div class="info-item"><i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4 style="color:white;margin-bottom:0.2rem">Location</h4>
+              <p>Abuja, Nigeria</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Panel -->
+        <div class="contact-form-panel">
+          <form class="contact-form" method="POST" action="" style="box-shadow: none; padding: 0;">
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <textarea name="message" rows="4" placeholder="Message" required></textarea>
+            <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-brand" data-aos="fade-up">
-      <h2>EcoNeemTech </h2>
-      <p>Innovating for a cleaner, greener future through sustainable technology and action.</p>
-    </div>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand" data-aos="fade-up">
+        <h2>EcoNeemTech </h2>
+        <p>Innovating for a cleaner, greener future through sustainable technology and action.</p>
+      </div>
 
-    <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="about.php">About</a></li>
-        <li><a href="products.php">Products</a></li>
-        <li><a href="team.php">Team</a></li>
-        <li><a href="contact.php">Contact</a></li>
-      </ul>
-    </div>
+      <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
 
-    <div class="footer-newsletter" data-aos="fade-up" data-aos-delay="200">
-      <h4>Subscribe to Our Newsletter</h4>
-      <form action="#" method="post" class="newsletter-form">
-        <input type="email" name="email" placeholder="Enter your email" required />
-        <button type="submit">Subscribe</button>
-      </form>
-    </div>
+      <div class="footer-newsletter" data-aos="fade-up" data-aos-delay="200">
+        <h4>Subscribe to Our Newsletter</h4>
+        <form action="#" method="post" class="newsletter-form">
+          <input type="email" name="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
 
-    <div class="footer-social" data-aos="fade-up" data-aos-delay="300">
-      <h4>Follow Us</h4>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
+      <div class="footer-social" data-aos="fade-up" data-aos-delay="300">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="footer-bottom">
-    <p>&copy; <?= date("Y") ?> EcoNeemTech. All rights reserved.</p>
-  </div>
-</footer>
+    <div class="footer-bottom">
+      <p>&copy; <?= date("Y") ?> EcoNeemTech. All rights reserved.</p>
+    </div>
+  </footer>
 
-<!-- AOS JS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000,
-    once: true
-  });
-</script>
-<script>
-  function toggleMenu() {
-    const navLinks = document.getElementById("navLinks");
-    navLinks.classList.toggle("active");
-  }
-</script>
-<script>
-  function toggleMenu(el) {
-    el.classList.toggle("open");
-    document.getElementById("navLinks").classList.toggle("active");
-  }
-</script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("active");
+    }
 
+    // Cart Functionality
+    const cartBtns = document.querySelectorAll('.btn-cart');
+    const cartCount = document.querySelector('.cart-count');
+    let count = 0;
+
+    cartBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        count++;
+        cartCount.innerText = count;
+        
+        // Animation effect
+        cartCount.style.transform = 'scale(1.5)';
+        setTimeout(() => {
+           cartCount.style.transform = 'scale(1)';
+        }, 200);
+        
+        // Button feedback
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-check"></i> Added';
+        this.style.background = 'var(--primary-dark)';
+        
+        setTimeout(() => {
+          this.innerHTML = originalText;
+          this.style.background = '';
+        }, 1500);
+      });
+    });
+  </script>
 
 </body>
+
 </html>
