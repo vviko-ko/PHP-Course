@@ -5,6 +5,17 @@
     }
   },
   "routes": [
-    { "src": "/(.*)", "dest": "/index.php" }
+    {
+      "src": "/style.css",
+      "dest": "/style.css"
+    },
+    {
+      "src": "/Images/(.*)",
+      "dest": "/Images/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
   ]
 }
