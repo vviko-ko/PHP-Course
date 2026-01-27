@@ -334,9 +334,8 @@ $company_name = "EcoNeemTech";
     <!-- Cart Section -->
     <section class="cart-section">
         <div class="container">
-            <h1 class="page-title">Shopping Cart</h1>
-
             <?php if ($cart_count > 0): ?>
+                <h1 class="page-title">Shopping Cart</h1>
                 <div class="cart-grid">
                     <!-- Cart Items Column -->
                     <div class="cart-items-container">
