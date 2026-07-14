@@ -3,33 +3,23 @@
    ========================================= */
 :root {
   /* Colors */
-  --primary: #10b981;
-  /* Emerald 500 */
-  --primary-dark: #047857;
-  /* Emerald 700 */
-  --primary-light: #d1fae5;
-  /* Emerald 100 */
-  --secondary: #064e3b;
-  /* Emerald 900 - Text/Headings */
-  --accent: #34d399;
-  /* Emerald 400 */
+  --primary: #2d6a4f;
+  --primary-dark: #1b4332;
+  --primary-light: #d8e8dc;
+  --secondary: #1a2b22;
+  --accent: #95d5b2;
 
-  --text-main: #1f2937;
-  /* Gray 800 */
-  --text-muted: #4b5563;
-  /* Gray 600 */
-  --text-light: #f9fafb;
-  /* Gray 50 */
+  --text-main: #1a2b22;
+  --text-muted: #6b7a70;
+  --text-light: #faf9f6;
 
-  --bg-body: #f8fafc;
-  /* Slate 50 */
+  --bg-body: #faf9f6;
   --bg-white: #ffffff;
-  --bg-soft: #f0fdf4;
-  /* Light Green tint */
+  --bg-soft: #dceae0;
 
   /* Gradients */
-  --gradient-hero: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-  --gradient-primary: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-hero: linear-gradient(135deg, #d8e8dc 0%, #bfd8c9 100%);
+  --gradient-primary: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);
 
   /* Typography */
   --font-heading: 'Poppins', sans-serif;
