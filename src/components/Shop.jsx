@@ -46,15 +46,15 @@ export default function Shop({ cartCount, setCartCount }) {
   };
 
   return (
-    <section id="shop" className="py-32 bg-white relative">
+    <section id="shop" className="py-16 md:py-24 lg:py-32 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Our Shop</span>
-          <h2 className="text-4xl md:text-5xl font-serif text-primary-dark">Eco-Friendly Products</h2>
-          <p className="mt-6 text-text-muted font-light text-lg">High-quality sustainable solutions for your home and community.</p>
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+          <span className="text-primary font-bold tracking-wider uppercase text-xs md:text-sm mb-3 md:mb-4 block">Our Shop</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-dark">Eco-Friendly Products</h2>
+          <p className="mt-4 md:mt-6 text-text-muted font-light text-base md:text-lg">High-quality sustainable solutions for your home and community.</p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
           {products.map((product, index) => (
             <motion.div
               key={index}
@@ -65,7 +65,7 @@ export default function Shop({ cartCount, setCartCount }) {
               className="bg-bg-body overflow-hidden border border-primary-light/30 hover:border-primary transition-colors group flex flex-col h-full"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-white">
-                <span className="absolute top-4 left-4 z-10 bg-primary-dark text-white text-xs tracking-wider uppercase px-4 py-2 shadow-sm font-medium">
+                <span className="absolute top-4 left-4 z-10 bg-primary-dark text-white text-[10px] md:text-xs tracking-wider uppercase px-3 md:px-4 py-1 md:py-2 shadow-sm font-medium">
                   {product.category}
                 </span>
                 
@@ -77,34 +77,34 @@ export default function Shop({ cartCount, setCartCount }) {
                 
                 {/* Quick actions overlay */}
                 <div className="absolute inset-0 bg-primary-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
-                  <button className="w-12 h-12 bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-500">
-                    <Heart size={20} strokeWidth={1.5} />
+                  <button className="w-10 h-10 md:w-12 md:h-12 bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-500">
+                    <Heart size={18} strokeWidth={1.5} />
                   </button>
-                  <button className="w-12 h-12 bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-500 delay-100">
-                    <Eye size={20} strokeWidth={1.5} />
+                  <button className="w-10 h-10 md:w-12 md:h-12 bg-white flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors transform translate-y-4 group-hover:translate-y-0 duration-500 delay-100">
+                    <Eye size={18} strokeWidth={1.5} />
                   </button>
                 </div>
               </div>
               
-              <div className="p-8 flex flex-col flex-grow">
-                <div className="flex text-primary mb-4 gap-1">
+              <div className="p-5 md:p-8 flex flex-col flex-grow">
+                <div className="flex text-primary mb-3 md:mb-4 gap-1">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} size={14} fill={i < product.rating ? "currentColor" : "none"} className={i < product.rating ? "" : "text-gray-300"} strokeWidth={1.5} />
                   ))}
                 </div>
                 
-                <h3 className="text-xl font-serif text-primary-dark mb-2">{product.name}</h3>
-                <p className="text-sm font-light text-text-muted mb-6 flex-grow">{product.desc}</p>
+                <h3 className="text-lg md:text-xl font-serif text-primary-dark mb-2">{product.name}</h3>
+                <p className="text-xs md:text-sm font-light text-text-muted mb-4 md:mb-6 flex-grow">{product.desc}</p>
                 
-                <div className="flex items-center justify-between mt-auto pt-6 border-t border-primary-light/30">
-                  <span className="text-2xl font-light text-text-main">{product.price}</span>
+                <div className="flex items-center justify-between mt-auto pt-4 md:pt-6 border-t border-primary-light/30">
+                  <span className="text-xl md:text-2xl font-light text-text-main">{product.price}</span>
                   <button 
                     onClick={() => handleAddToCart(product)}
                     disabled={loadingProduct === product.name}
-                    className="flex items-center gap-2 bg-transparent text-primary hover:text-primary-dark font-medium uppercase tracking-wider text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed group/btn"
+                    className="flex items-center gap-2 bg-transparent text-primary hover:text-primary-dark font-medium uppercase tracking-wider text-xs md:text-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed group/btn"
                   >
                     {loadingProduct === product.name ? (
-                      <span className="animate-spin w-5 h-5 border-2 border-primary border-t-transparent rounded-full block"></span>
+                      <span className="animate-spin w-4 h-4 md:w-5 md:h-5 border-2 border-primary border-t-transparent rounded-full block"></span>
                     ) : (
                       <>
                         Add <ShoppingCart size={16} className="group-hover/btn:translate-x-1 transition-transform" />

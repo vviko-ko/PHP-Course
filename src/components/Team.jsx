@@ -18,15 +18,15 @@ export default function Team() {
   ];
 
   return (
-    <section id="team" className="py-32 bg-white relative border-b border-primary-light/20">
+    <section id="team" className="py-16 md:py-24 lg:py-32 bg-white relative border-b border-primary-light/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Our Leadership</span>
-          <h2 className="text-4xl md:text-5xl font-serif text-primary-dark">Meet the Directors</h2>
-          <p className="mt-6 text-text-muted font-light text-lg">EcoNeemTech is led by a founding Board of Directors with direct, accountable ownership in the company's success. Part of an 8-member founding shareholder base.</p>
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+          <span className="text-primary font-bold tracking-wider uppercase text-xs md:text-sm mb-3 md:mb-4 block">Our Leadership</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-dark">Meet the Directors</h2>
+          <p className="mt-4 md:mt-6 text-text-muted font-light text-base md:text-lg">EcoNeemTech is led by a founding Board of Directors with direct, accountable ownership in the company's success. Part of an 8-member founding shareholder base.</p>
         </div>
         
-        <div className="flex flex-col md:flex-row justify-center gap-12">
+        <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-12">
           {teamMembers.map((member, index) => (
             <motion.div
               key={index}
@@ -36,8 +36,8 @@ export default function Team() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.2 }}
               className="group relative w-full md:w-[450px]"
             >
-              <div className="bg-bg-body p-8 border border-primary-light/30 flex flex-col items-center text-center hover:border-primary-dark/20 transition-colors h-full">
-                <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-white shadow-lg">
+              <div className="bg-bg-body p-6 md:p-8 border border-primary-light/30 flex flex-col items-center text-center hover:border-primary-dark/20 transition-colors h-full">
+                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 md:mb-6 border-4 border-white shadow-lg">
                   <img 
                     src={member.image} 
                     alt={member.name} 
@@ -45,19 +45,19 @@ export default function Team() {
                   />
                 </div>
                 
-                <h3 className="text-2xl font-serif text-primary-dark mb-2">{member.name}</h3>
-                <p className="text-primary font-bold tracking-widest uppercase text-xs mb-6">{member.position}</p>
-                <p className="text-text-muted font-light leading-relaxed mb-8">{member.bio}</p>
+                <h3 className="text-xl md:text-2xl font-serif text-primary-dark mb-1 md:mb-2">{member.name}</h3>
+                <p className="text-primary font-bold tracking-widest uppercase text-[10px] md:text-xs mb-4 md:mb-6">{member.position}</p>
+                <p className="text-sm md:text-base text-text-muted font-light leading-relaxed mb-6 md:mb-8">{member.bio}</p>
                 
                 <div className="flex gap-4 mt-auto">
                   <a href="#" className="text-primary-light/70 hover:text-primary transition-colors">
-                    <FaLinkedinIn size={20} />
+                    <FaLinkedinIn size={18} className="md:w-5 md:h-5" />
                   </a>
                   <a href="#" className="text-primary-light/70 hover:text-primary transition-colors">
-                    <FaTwitter size={20} />
+                    <FaTwitter size={18} className="md:w-5 md:h-5" />
                   </a>
                   <a href="#" className="text-primary-light/70 hover:text-primary transition-colors">
-                    <FaEnvelope size={20} />
+                    <FaEnvelope size={18} className="md:w-5 md:h-5" />
                   </a>
                 </div>
               </div>

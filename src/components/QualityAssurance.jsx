@@ -36,14 +36,14 @@ export default function QualityAssurance() {
   ];
 
   return (
-    <section id="quality" className="py-32 bg-white relative border-b border-primary-light/20">
+    <section id="quality" className="py-16 md:py-24 lg:py-32 bg-white relative border-b border-primary-light/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Quality Assurance Process</span>
-          <h2 className="text-4xl md:text-5xl font-serif text-primary-dark">Quality, Verified at Every Stage</h2>
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+          <span className="text-primary font-bold tracking-wider uppercase text-xs md:text-sm mb-3 md:mb-4 block">Quality Assurance Process</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-dark">Quality, Verified at Every Stage</h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -51,14 +51,14 @@ export default function QualityAssurance() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-              className="bg-bg-body p-8 border border-primary-light/30 hover:border-primary transition-colors flex flex-col items-center text-center group"
+              className="bg-bg-body p-6 md:p-8 border border-primary-light/30 hover:border-primary transition-colors flex flex-col items-center text-center group"
             >
-              <div className="text-primary mb-6 group-hover:scale-110 transition-transform duration-500">
+              <div className="text-primary mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-500">
                 {step.icon}
               </div>
-              <h3 className="text-5xl font-serif text-primary-dark/10 mb-4 group-hover:text-primary-dark/20 transition-colors duration-500">{step.num}</h3>
-              <h4 className="text-lg font-serif text-primary-dark mb-4 leading-tight">{step.title}</h4>
-              <p className="text-sm font-light text-text-muted leading-relaxed">{step.desc}</p>
+              <h3 className="text-4xl md:text-5xl font-serif text-primary-dark/10 mb-3 md:mb-4 group-hover:text-primary-dark/20 transition-colors duration-500">{step.num}</h3>
+              <h4 className="text-base md:text-lg font-serif text-primary-dark mb-3 md:mb-4 leading-tight">{step.title}</h4>
+              <p className="text-xs md:text-sm font-light text-text-muted leading-relaxed">{step.desc}</p>
             </motion.div>
           ))}
         </div>

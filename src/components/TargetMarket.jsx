@@ -26,14 +26,14 @@ export default function TargetMarket() {
   ];
 
   return (
-    <section id="target-market" className="py-32 bg-white relative border-b border-primary-light/20">
+    <section id="target-market" className="py-16 md:py-24 lg:py-32 bg-white relative border-b border-primary-light/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Target Market</span>
-          <h2 className="text-4xl md:text-5xl font-serif text-primary-dark">Who We Serve</h2>
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+          <span className="text-primary font-bold tracking-wider uppercase text-xs md:text-sm mb-3 md:mb-4 block">Target Market</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-dark">Who We Serve</h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {markets.map((market, index) => (
             <motion.div
               key={index}
@@ -41,13 +41,13 @@ export default function TargetMarket() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
-              className="bg-bg-body p-10 border border-primary-light/30 hover:border-primary-dark/20 transition-colors group"
+              className="bg-bg-body p-6 md:p-8 lg:p-10 border border-primary-light/30 hover:border-primary-dark/20 transition-colors group"
             >
-              <div className="mb-8 text-primary">
+              <div className="mb-6 md:mb-8 text-primary">
                 {market.icon}
               </div>
-              <h4 className="text-xl font-serif text-primary-dark mb-4">{market.title}</h4>
-              <p className="text-text-muted font-light leading-relaxed">{market.desc}</p>
+              <h4 className="text-lg md:text-xl font-serif text-primary-dark mb-3 md:mb-4">{market.title}</h4>
+              <p className="text-sm md:text-base text-text-muted font-light leading-relaxed">{market.desc}</p>
             </motion.div>
           ))}
         </div>
